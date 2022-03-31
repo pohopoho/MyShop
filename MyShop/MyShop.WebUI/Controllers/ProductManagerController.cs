@@ -96,7 +96,6 @@ namespace MyShop.WebUI.Controllers
                 }
                 productToEdit.Category = product.Category;
                 productToEdit.Description = product.Description;
-                productToEdit.Image = product.Image;
                 productToEdit.Name = product.Name;
                 productToEdit.Price = product.Price;
 
@@ -135,5 +134,7 @@ namespace MyShop.WebUI.Controllers
                 return RedirectToAction("Index");
             }
         }
+
+        
     }
 }
