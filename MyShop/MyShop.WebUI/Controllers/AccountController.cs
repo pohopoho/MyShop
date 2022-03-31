@@ -21,9 +21,9 @@ namespace MyShop.WebUI.Controllers
         private ApplicationUserManager _userManager;
         private IRepository<Customer> customerRepository;
 
-        public AccountController( IRepository<Customer> customerRepository )
+        public AccountController(IRepository<Customer> CustomerRepository)
         {
-            this.customerRepository = customerRepository;
+            this.customerRepository = CustomerRepository;
         }
 
         public ApplicationSignInManager SignInManager
@@ -153,7 +153,8 @@ namespace MyShop.WebUI.Controllers
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
-                    //register customer account and link to login account
+
+                    //register the customer model
                     Customer customer = new Customer()
                     {
                         City = model.City,
@@ -168,7 +169,6 @@ namespace MyShop.WebUI.Controllers
 
                     customerRepository.Insert(customer);
                     customerRepository.Commit();
-
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
                     
                     // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
