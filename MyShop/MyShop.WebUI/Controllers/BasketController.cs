@@ -47,7 +47,6 @@ namespace MyShop.WebUI.Controllers
 
             return PartialView(basketSummary);
         }
-
         [Authorize]
         public ActionResult Checkout()
         {
